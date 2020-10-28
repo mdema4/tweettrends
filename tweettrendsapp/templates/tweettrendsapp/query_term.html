@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="container">
+    <h1 align="center">&nbsp;Trends for Query Term<br><br></h1>
+    <form name="tweet_trends_query_form" action="/sentiment_query" method="post" target="_self">
+        {% csrf_token %}
+        <table class="tableText" border="1" cellpadding="10px" bordercolor="#FFFFFF" align="center">
+            <tr>
+                <td align="center">
+                    Enter Query Term (include # if hashtag term): &nbsp;&nbsp;<input type="text" name="query_term" value= "{{query_term}}" style="width:150px">
+                </td>
+            </tr>
+            <tr><td align="center">&nbsp;&nbsp;</td></tr>
+            <tr>
+                <td align="center">
+                    <input type="submit" name="update" value="Generate Trends" style="width: inherit">
+                </td>
+            </tr>
+        </table>
+    </form>
+    <br>
+    {% if query_term %}
+        <hr>
+        <br>
+        <h3 align="center">&nbsp;Sentiment Analysis on <b>{{query_term}}</b></h3>
+        <table class="tableText1" border="0" cellpadding="2" cellspacing="0"
+               style="border-collapse: collapse;width:450pt" bordercolor="#C0C0C0" align="center">
+            {% if donut_image %}
+                <tr>
+                    <td align="center">
+                        <img alt="embedded" src="data:image/png;base64,{{donut_image}}"/>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td align="center">
+                        <b><font face="verdana" color="darkred" size="4"> Trending tweets based on the query cannot be identified.</font></b>
+                    </td>
+                </tr>
+            {% endif %}
+        </table>
+    {% endif %}
+    <br>
+
+
+</div>
+{% endblock %}

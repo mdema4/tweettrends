@@ -1,1 +1,2 @@
-# tweettrends
+# Tweettrends (http://tweettrends.herokuapp.com/)
+Tweet Trends is a Django Based Web Application. The application uses a Python version of the Twitter API at the backend to extract live tweets and trending topics and perform Sentiment Analysis (SA) on the top 3 trends using Naive Bayes Binary Classifier. The results of the Sentiment Analysis is displayed using Pie Charts. The main code that drives the app is under tweettrendsapp/views.py.

@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <h1 align="center"><span class="glyphicon glyphicon-info-sign"></span> &nbsp;About!<br><br></h1>
+        <div style="width:60%; margin:0 auto; text-align: center;">
+            <h4> Below are few questions that you may have regarding this web application. <br> Please e-mail me if you have further questions.</h4>
+            <br>
+            <hr>
+            <br>
+        </div>
+
+        <div style="width:80%; margin:0 auto; text-align: justify;" align="center">
+            <ul>
+                <li><font size="4">Q1. Why do you pick Twitter data? </font>
+                    <ul> <font size="3">
+
+                        <li> According to <a href="http://www.internetlivestats.com/twitter-statistics/">Internet Live Stats</a>, people post 6,000 tweets every second and about 500 million tweets per day.
+                            Working with this huge amount of LIVE data provides a great opportunity to test the performance of a Machine Learning Algorithms. Due to the limitation on the Twitter API, however,
+                            one can only query a certain number of tweets for a given twitter account. Even under this cap, one can get enough tweets to test a given algorithm.</li>
+                        </font>
+                    </ul>
+                    <br>
+                </li>
+                <li><font size="4">Q2. How many tweets per page request are used in this application? </font>
+                    <ul> <font size="3">
+                        <li>Due to the cap on number of tweet query in a given time slot, only {{count_max_tweet}} tweets per a given trend are used to generate the Sentiment Analysis result. </li>
+                    </font>
+                    </ul>
+                    <br>
+                </li>
+                <li><font size="4">Q3. What language is used in the application? </font>
+                    <ul> <font size="3">
+                        <li>Only tweets and trends in English language is supported at the moment. Other languages are filtered before performing Sentiment Ananlysis.</li>
+                    </font>
+                    </ul>
+                    <br>
+                </li>
+                <li><font size="4">Q4. What modeling procedures have you followed? </font>
+                    <ul> <font size="3">
+                        <li> <b> Preprocessing: </b> Mainly used regular expression (re) package to remove user identifiers and hashtags in the tweet and also implemented token "normalizer" that converts tokens to basic form by processing successive character (such as converting tokens like woow, wooooow and woooooow to woow).</li>
+                        <li> <b> Classification: </b>To perform the sentiment analysis, I have implemented a Binary Naive-Bayes classifier and trained the model using 1.6 million distantly supervised training tweets and tested it using 500 manually labeled tweets.
+                            The accuracy of the model on the test data is 80%.   </li>
+                        <li> <b> Note: </b>Initially, I was planning to use the Scikit-Learn library but due to dependency of the package and lack of an easy-to-use buildpack in Heroku, I have decided to implement my own preprocessor, tokenizer and a Binary Naive Baye's Classifier. </li>
+                    </font>
+                    </ul>
+                    <br>
+                </li>
+                <li><font size="4">Q5. Where can I find the training dataset? </font>
+                    <ul> <font size="3">
+                        <li>The training dataset for the Sentiment Analysis can be downloaded from <a href="http://help.sentiment140.com/for-students/">Sentiment140</a>.</li>
+                    </font>
+                    </ul>
+                    <br>
+                </li>
+
+                <li><font size="4">Q6. What Python modules are used? </font>
+                    <ul> <font size="3">
+                        <li>Mainly <b>Regular Expressions, CSV, Tweepy, Matplotlib and Django framework</b>.</li>
+                    </font>
+                    </ul>
+                    <br>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <br>
+    <br>
+</div>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="container">
+    <h1 align="center">&nbsp;Top Trending Tweets in USA<br><br></h1>
+    <table class="tableText1" border="1" cellpadding="2" cellspacing="0"
+           style="border-collapse: collapse;width:450pt" bordercolor="#C0C0C0" align="center">
+        <colgroup>
+            <col width="50" style="width:50pt"/>
+            <col width="250" style="width:250pt"/>
+            <col width="50" style="width:50pt;"/>
+        </colgroup>
+        <tr>
+            <td align="center"><b>Rank</b></td>
+            <td align="center"><b>Trending Topic</b></td>
+            <td align="center"><b># of Tweets</b></td>
+        </tr>
+
+        {% for trend in top_us_trends_list %}
+            {% if forloop.counter|divisibleby:2 %}
+                <tr bgcolor="#FFFFFF">
+            {% else %}
+                <tr bgcolor="#EBEDED">
+            {% endif %}
+            <td align="center">{{ forloop.counter }}</td>
+            <td> &nbsp;&nbsp; <a href="{{ trend.url }}">{{ trend.hashtag }}</a></td>
+            <td align="right">{{ trend.tweet_volume_formatted }}&nbsp;&nbsp;&nbsp;</td>
+        </tr>
+        {% endfor %}
+   </table>
+    <br>
+    {% if donut_image1 or donut_image2 or donut_image3 %}
+        <hr>
+        <br>
+        <h3 align="center">&nbsp;Top Trends Sentiment Analysis</h3>
+        <table class="tableText1" border="1" cellpadding="2" cellspacing="0"
+               style="border-collapse: collapse;width:450pt" bordercolor="#C0C0C0" align="center">
+            <tr>
+                {% if donut_image1 %}
+                    <td align="center">
+                        <b><br>Rank 1<br><a href="{{ query_url1 }}">{{query_tag1}}</a></b><br>
+                        <img alt="embedded" src="data:image/png;base64,{{donut_image1}}"/>
+                    </td>
+                {% endif %}
+                {% if donut_image2 %}
+                    <td align="center">
+                        <b><br>Rank 2<br><a href="{{ query_url2 }}">{{query_tag2}}</a></b><br>
+                        <img alt="embedded" src="data:image/png;base64,{{donut_image2}}"/>
+                    </td>
+                {% endif %}
+                {% if donut_image3 %}
+                    <td align="center">
+                        <b><br>Rank 3<br><a href="{{ query_url3 }}">{{query_tag3}}</a></b><br>
+                        <img alt="embedded" src="data:image/png;base64,{{donut_image3}}"/>
+                    </td>
+                {% endif %}
+            </tr>
+        </table>
+        <br>
+    {% endif %}
+</div>
+{% endblock %}

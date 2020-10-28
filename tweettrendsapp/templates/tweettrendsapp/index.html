@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <h1 align="center"> Welcome to <b>Tweet Trends</b>!<br><br></h1>
+        <div style="width:60%; margin:0 auto; text-align: justify;">
+            <h4> <b>Tweet Trends</b> is part of the <b><a href="https://datatrends.herokuapp.com/"> Data Trends</a> </b> <a href="https://www.djangoproject.com/">Django</a> Based Web Application hosted by <a href="https://www.heroku.com/home">Heroku</a>.
+                The application uses a Python version of the <a href="https://twitter.com/twitterapi?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor/"> Twitter API </a> at the backend to extract live tweets and trending topics and perform Sentiment Analysis (SA) on the top trends.
+                The results of the Sentiment Analysis is displayed using Pie Charts. Also, it allows a user to search for Hash-Tags and see the Sentiment Analysis on the tags. The sub-applications can be accessed by selecting the <b>Tweet Trends List</b> dropdown at the top left of this page.
+            </h4>
+            <br>
+        </div>
+
+        <div style="width:40%; margin:0 auto; text-align: justify;">
+            <h3><span class="glyphicon glyphicon-info-sign"></span> App Contents</h3>
+            <ul>
+                <li>Sentiment Analysis on Top Trends</li>
+                <li>Sentiment Analysis on a Query Term</li>
+            </ul>
+            <br>
+        </div>
+    </div>
+    <br>
+    <br>
+</div>
+{% endblock %}
